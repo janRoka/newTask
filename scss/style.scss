@@ -1,0 +1,43 @@
+@import 'default.scss';
+
+/* header */
+
+.header{
+
+}
+
+/* nav */
+
+.nav{
+	&-wrapper{
+
+	}
+	&-fixed{
+		position: fixed;
+		left: 0;
+		top: 0;
+		z-index: 10;
+		width: 100%;
+	}
+}
+
+/* footer */
+
+.footer{
+	
+}
+
+/* Адаптивные стили */
+
+@media screen and (max-width: 1200px){
+	
+}
+@media screen and (max-width: 991px){
+	
+}
+@media screen and (max-width: 767px){
+	
+}
+@media screen and (max-width: 575px){
+	
+}
