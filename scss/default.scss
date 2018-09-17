@@ -26,12 +26,6 @@ $tsw: -1px 1px 1px #fff;
 
 a{ text-decoration: underline; }
 
-.btn{
-	&:focus{
-		box-shadow: none;
-	}
-}
-
 .clearfix:after{
 	content: "";
 	display: block;
@@ -98,6 +92,15 @@ section{
 }
 iframe{
 	border: none;
+}
+textarea{
+	resize: none;
+}
+
+.btn{
+	&:focus{
+		box-shadow: none;
+	}
 }
 
 /* Modals */

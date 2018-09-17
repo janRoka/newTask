@@ -2,7 +2,10 @@ $(document).ready(function(){
 
 	var w = window.innerWidth; // ширина окна с полосой прокрутки
 
-	$('[data-fancybox]').fancybox({loop:true});
+	$('[data-fancybox]').fancybox({
+		loop:true,
+		animationEffect: "fade"
+	});
 
 	$('.btn-modal').fancybox();
 
@@ -106,13 +109,6 @@ $(document).ready(function(){
 			$('.ajax-form').find('input[type="text"],input[type="email"],textarea').val('');
 		});
 	});
-	
-	// ie9 placeholders
-	if($('html').hasClass('ie9')){
-		$('input[type="text"], input[type="email"] textarea').each(function(){
-			$(this).val($(this).attr('placeholder'));
-		});
-	}
 
 	// Скрыть элемент при клике за его пределами
 	// $(document).click(function(event) {
