@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp         = require('gulp'),
-	less         = require('gulp-less'),
 	sass         = require('gulp-sass'),
 	concat       = require('gulp-concat'),
 	uglify       = require('gulp-uglify'),
@@ -34,25 +33,6 @@ gulp.task('browser-sync',function(){
 		notify: false
 	});
 });
-
-// Работа на локалке будет доступно через localhost:3000
-// gulp.task('browser-sync',function(){
-// 	browserSync.init({
-// 		proxy: 'site.loc',
-// 		notify: false
-// 	});
-// });
-
-// Работа на сервере. После запустить в браузере ip-сервера:3000
-// gulp.task('browser-sync',function(){
-// 	browserSync.init({
-// 		proxy: 'http://site.ru/', // Необходимый домен
-// 		port: 3000,
-// 		open: false,
-// 		ghost: true,
-// 		notify: false
-// 	});
-// });
 
 gulp.task('watch', ['browser-sync'], function(){
 	gulp.watch('./scss/*.scss', ['sass']).on('end',browserSync.reload);

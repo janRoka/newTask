@@ -45,7 +45,10 @@ a{ text-decoration: underline; }
 .bg-light{ background: $light; }
 
 body{
-	font: normal 14px/16px $font;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
+	font-family: $font;
 	color: $text-color;
 	max-width: 1920px;
 	margin: 0 auto;
@@ -76,7 +79,7 @@ html, body{
 }
 @media screen and (min-width: 1200px){
 	.container {
-		width: 1200px;
+		max-width: 1200px;
 	}
 }
 
@@ -108,32 +111,4 @@ textarea{
 .fancybox-button:focus,
 .fancybox-close-small:focus:after{
 	outline: none;
-}
-
-/* pagination */
-
-.pagination{
-	margin-top: 60px;
-	&>li{
-		&>a,&>span{
-			display: block;
-			padding: 5px 10px;
-			margin: 0 5px;
-			border: 1px solid $green;
-			color: $text-color;
-			text-decoration: none;
-			&:hover{
-				background: $gg;
-				color: #fff;
-			}
-		}
-		&.active>a{
-			background: $gg;
-			color: #fff;
-		}
-		&.disabled{
-			pointer-events: none;
-			opacity: .4;
-		}
-	}
 }
