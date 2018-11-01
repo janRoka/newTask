@@ -54,6 +54,7 @@ gulp.task('compress-css', function () {
 
 gulp.task('compress-js', function () {
 	gulp.src([
+		'js/jquery.maskedinput.min.js',
 		'js/fancybox.min.js',
 		'js/slick.min.js'
 	])

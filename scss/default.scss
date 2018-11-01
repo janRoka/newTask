@@ -13,6 +13,9 @@ $half-white: rgba(255,255,255,.5);
 $shadow: 0 0 10px 0 $half-black;
 $font: Helvetica, Arial, sans-serif;
 
+$primary: #007bff;
+$success: #28a745;
+
 // text-shadow
 
 $tsb: -1px 1px 1px #000;
@@ -44,10 +47,13 @@ a{ text-decoration: underline; }
 .wrap-out{ overflow: hidden; }
 .bg-light{ background: $light; }
 
+html{
+	font-size: 10px;
+}
 body{
 	font-weight: 400;
-	font-size: 14px;
-	line-height: 16px;
+	font-size: 1.4rem;
+	line-height: 1.6rem;
 	font-family: $font;
 	color: $text-color;
 	max-width: 1920px;
@@ -98,6 +104,25 @@ iframe{
 }
 textarea{
 	resize: none;
+}
+
+.d-table{
+	&-cell{
+		padding: 5px;
+		border: 1px solid black;
+		border-right: none;
+		border-bottom: none;
+		&:last-child{
+			border-right: 1px solid black;
+		}
+	}
+	&-row{
+		&:last-child{
+			.d-table-cell{
+				border-bottom: 1px solid black;
+			}
+		}
+	}
 }
 
 .btn{

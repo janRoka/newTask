@@ -13,11 +13,8 @@ $(document).ready(function(){
 		$.fancybox.close();
 	});
 
-	// В поле телефона оставляем только цифры и +
-	$('input[name="phone"]').keyup(function(){
-		var val = $(this).val().replace(/[^0-9+]/,'');
-		$(this).val(val);
-	});
+	// Маска телефона
+	$('input[name="phone"]').mask('+7(999)999-99-99');
 
 	// ajax form
 	$('.ajax-form').submit(function(e){

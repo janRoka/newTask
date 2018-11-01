@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
 	// Прилипшее к верху меню
-
 	var navPos, winPos, navHeight;
 
 	function refreshVar() {
@@ -28,7 +27,6 @@ $(document).ready(function(){
 	});
 
 	// Бегающая линия под меню
-
 	var liActive, liPos, line = $('.top-menu-line');
 
 	function moveLine(action = null){
@@ -47,7 +45,6 @@ $(document).ready(function(){
 	});
 
 	// Активация пункта меню при прокрутке
-
 	function scrollActive(){
 		var arr = ['works','tech','prices','faq','contacts']; // id секций
 		for(var i = 0; i < arr.length; i++){
@@ -109,5 +106,80 @@ $(document).ready(function(){
 			src: '#modal-conf'
 		});
 	}
+
+	//jquery UI подсветка нужных дат
+	function highlightDays(date) {
+		for (var i = 0; i < dates.length; i++) {
+			dates[i] = new Date(dates[i]);
+			var d1 = dates[i].getDate()+'.'+(dates[i].getMonth())+'.'+dates[i].getFullYear(),
+				d2 = date.getDate()+'.'+date.getMonth()+'.'+date.getFullYear();
+			if (d1 == d2){
+				return [true, 'highlight', 'Возможная дата отбытия'];
+			}
+		}
+		return [false, ''];
+	}
+
+	function tourDates(){
+		var form = $('.form-filter'),
+			uri = form.data('ajax');
+		var params = {
+			action: 'tour-dates',
+			city: form.find('select[name="city"]').val(),
+			transport: form.find('select[name="transport"]').val()
+		};
+		$.post(uri,params,function(data){
+			dates = JSON.parse(data);
+			// console.log(data);
+		});
+	}
+
+	var dates = [];
+	var dates_days = [];
+
+	tourDates();
+	$('.form-filter select').change(tourDates);
+
+	$.datepicker.setDefaults($.datepicker.regional["ru"]);
+
+	var dateTo = $('input[name="date_to"]').datepicker({
+		dateFormat: 'dd.mm.yy'
+	});
+
+	var dateFrom = $('input[name="date_from"]').datepicker({
+		dateFormat: 'dd.mm.yy',
+		beforeShowDay: highlightDays
+	}).on('change', function () {
+		dateTo.datepicker( "option", "minDate", $(this).datepicker('getDate'));
+	});
+
+	// Получить годы из unix time
+	$('input[name*="date_born"]').on('change',function(){
+		var now = new Date(),
+			dateArr = $(this).val().split('.'),
+			dateBorn = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]),
+			sec = 31556926, // Кол-во секунд в году
+			age = Math.floor((now - dateBorn) / (1000*sec));
+		age = isNaN(age) ? 0 : age;
+		age = age < 0 ? 0 : age;
+		$(this).closest('.form-row').find('input[name*="age"]').val(age);
+		$(this).closest('.table-row').find('input[name*="age"]').val(age);
+		
+		var obj = $(this);
+		changeCost(obj);
+	});
+
+	// Смена фона при прокрутке страницы
+	function changeBodyBg(){
+		var colorClass = 'color-pink';
+		$('.panel').each(function(){
+			if($(window).scrollTop() > $(this).offset().top - 300){
+				colorClass = 'color-' + $(this).data('color');
+			}
+			$('body').attr('class','').addClass(colorClass);
+		});
+	}
+	changeBodyBg();
+	$(window).scroll(changeBodyBg);
 
 });

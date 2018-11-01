@@ -4,7 +4,7 @@ if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) || $_SERVER['HTTP_X_REQUESTED_WITH'
 
 if($_SERVER['REQUEST_METHOD'] != 'POST'){ return; }
 
-$to = 'krasnoff.pro@mail.ru';
+$to = 'mail@mail.ru';
 $subject = 'Заявка с сайта Example';
 $message = '';
 
