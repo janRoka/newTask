@@ -10,16 +10,17 @@ $light: #f2f2f2;
 $half-black: rgba(0,0,0,.5);
 $half-white: rgba(255,255,255,.5);
 
-$shadow: 0 0 10px 0 $half-black;
-$font: Helvetica, Arial, sans-serif;
-
 $primary: #007bff;
 $success: #28a745;
 
 // text-shadow
-
 $tsb: -1px 1px 1px #000;
 $tsw: -1px 1px 1px #fff;
+
+
+$shadow: 0 0 10px 0 $half-black;
+
+$font: Helvetica, Arial, sans-serif;
 
 /* Общие стили */
 
@@ -48,12 +49,12 @@ a{ text-decoration: underline; }
 .bg-light{ background: $light; }
 
 html{
-	font-size: 10px;
+	font-size: 20px;
 }
 body{
 	font-weight: 400;
-	font-size: 1.4rem;
-	line-height: 1.6rem;
+	font-size: 16px;
+	line-height: 18px;
 	font-family: $font;
 	color: $text-color;
 	max-width: 1920px;

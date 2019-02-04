@@ -1,2 +1,6 @@
+# Папки
 /node_modules
+
+# Файлы
 *.txt
+package-lock.json
