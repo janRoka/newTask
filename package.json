@@ -6,6 +6,7 @@
 		"npm": "^6.4.1"
 	},
 	"devDependencies": {
+		"bower": "^1.8.8",
 		"browser-sync": "^2.23.6",
 		"gulp": "^3.9.1",
 		"gulp-autoprefixer": "^6.0.0",

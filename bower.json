@@ -1,0 +1,26 @@
+{
+  "name": "newtask",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "janRoka <krasnoff.pro@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/ohmywebru/newTask",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "bootstrap-css-only": "fyockm/bootstrap-css-only#^4.3.1",
+    "fancybox": "fancyapps/fancybox#^3.5.7",
+    "slick-carousel": "^1.8.1",
+    "jquery.maskedinput": "^1.4.1",
+    "flickity": "^2.2.0"
+  }
+}

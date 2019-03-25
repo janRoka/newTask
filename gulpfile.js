@@ -43,10 +43,10 @@ gulp.task('watch', ['browser-sync'], function(){
 
 gulp.task('compress-css', function () {
 	gulp.src([
-		'css/bootstrap.min.css',
-		'css/fancybox.min.css',
-		'css/slick.css',
-		'css/slick-theme.css'
+		'app/bower/normalize.css/normalize.css',
+		'app/bower/boostrap-css-only/css/bootstrap.min.css',
+		'app/bower/fancybox/dist/jquery.fancybox.min.css',
+		'app/bower/flickity/dist/flickity.min.css'
 	])
 	.pipe(concat('libs.min.css'))
 	.pipe(cssnano())
@@ -55,9 +55,9 @@ gulp.task('compress-css', function () {
 
 gulp.task('compress-js', function () {
 	gulp.src([
-		'js/jquery.maskedinput.min.js',
-		'js/fancybox.min.js',
-		'js/slick.min.js'
+		'app/bower/jquery.maskedinput/dist/jquery.maskedinput.min.js',
+		'app/bower/fancybox/dist/jquery.fancybox.min.js',
+		'app/bower/flickity/dist/flickity.pkgd.min.js'
 	])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())
