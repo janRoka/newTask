@@ -44,9 +44,11 @@ gulp.task('watch', ['browser-sync'], function(){
 gulp.task('compress-css', function () {
 	gulp.src([
 		'app/bower/normalize.css/normalize.css',
-		'app/bower/boostrap-css-only/css/bootstrap.min.css',
+		'app/bower/bootstrap-css-only/css/bootstrap.min.css',
+		'app/bower/bootstrap-css-only/css/bootstrap-grid.min.css',
 		'app/bower/fancybox/dist/jquery.fancybox.min.css',
-		'app/bower/flickity/dist/flickity.min.css'
+		'app/bower/slick-carousel/slick/slick.css',
+		'app/bower/slick-carousel/slick/slick-theme.css'
 	])
 	.pipe(concat('libs.min.css'))
 	.pipe(cssnano())
@@ -57,7 +59,7 @@ gulp.task('compress-js', function () {
 	gulp.src([
 		'app/bower/jquery.maskedinput/dist/jquery.maskedinput.min.js',
 		'app/bower/fancybox/dist/jquery.fancybox.min.js',
-		'app/bower/flickity/dist/flickity.pkgd.min.js'
+		'app/bower/slick-carousel/slick/slick.min.js'
 	])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())

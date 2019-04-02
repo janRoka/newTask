@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+	var ajaxLink = '/ajax/';
 	var w = window.innerWidth; // ширина окна с полосой прокрутки
 
 	$('[data-fancybox]').fancybox({
@@ -26,11 +27,28 @@ $(document).ready(function(){
 	$('.ajax-form').submit(function(e){
 		e.preventDefault();
 		var params = $(this).serialize();
-		$.post('/ajax/', params, function(data){
+		$.post(ajaxLink, params, function(data){
 			$.fancybox.close();
 			$.fancybox.open('<div class="modal">'+data+'</div>');
 			$('.ajax-form').find('input[type="text"],input[type="email"],textarea').val('');
 		});
 	});
+
+	// Вырезаем пустые строки и убираем жесткие размеры изображения для телефонов
+	if($('.content-area').length && w < 576){
+		$('.content-area img').removeAttr('width').removeAttr('height');
+		$('.content-area p').each(function(){
+			var ps = $(this).nextAll('p');
+			ps.each(function(){
+				if($(this).html() == '&nbsp;'){
+					$(this).remove();
+				}
+			});
+		});
+	}
+
+	// slider
+
+
 
 });
