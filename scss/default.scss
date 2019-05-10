@@ -23,7 +23,7 @@ $tsb: -1px 1px 1px #000;
 $tsw: -1px 1px 1px #fff;
 
 // Шрифты
-$base-font: Helvetica, Arial, sans-serif;
+$base-font: 'Helvetica', 'Arial', sans-serif;
 
 /* Общие стили */
 
@@ -92,30 +92,6 @@ iframe{
 }
 textarea{
 	resize: none;
-}
-ul.none{
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.d-table{
-	&-cell{
-		padding: 5px;
-		border: 1px solid $text-color;
-		border-right: none;
-		border-bottom: none;
-		&:last-child{
-			border-right: 1px solid $text-color;
-		}
-	}
-	&-row{
-		&:last-child{
-			.d-table-cell{
-				border-bottom: 1px solid $text-color;
-			}
-		}
-	}
 }
 
 .btn{
