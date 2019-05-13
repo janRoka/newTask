@@ -47,8 +47,7 @@ gulp.task('compress-css', function () {
 		'app/bower/bootstrap-css-only/css/bootstrap.min.css',
 		'app/bower/bootstrap-css-only/css/bootstrap-grid.min.css',
 		'app/bower/fancybox/dist/jquery.fancybox.min.css',
-		'app/bower/slick-carousel/slick/slick.css',
-		'app/bower/slick-carousel/slick/slick-theme.css'
+		'app/bower/flickity/dist/flickity.css',
 	])
 	.pipe(concat('libs.min.css'))
 	.pipe(cssnano())
@@ -59,7 +58,7 @@ gulp.task('compress-js', function () {
 	gulp.src([
 		'app/bower/jquery.maskedinput/dist/jquery.maskedinput.min.js',
 		'app/bower/fancybox/dist/jquery.fancybox.min.js',
-		'app/bower/slick-carousel/slick/slick.min.js'
+		'app/bower/flickity/dist/flickity.pkgd.js'
 	])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())
