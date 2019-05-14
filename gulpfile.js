@@ -6,7 +6,8 @@ var gulp         = require('gulp'),
 	uglify       = require('gulp-uglify'),
 	cssnano      = require('gulp-cssnano'),
 	browserSync  = require('browser-sync'),
-	autoprefixer = require('gulp-autoprefixer');
+	autoprefixer = require('gulp-autoprefixer'),
+	gcmq         = require('gulp-group-css-media-queries');
 
 gulp.task('default',function(){
 	console.log('Работает');
@@ -15,6 +16,7 @@ gulp.task('default',function(){
 gulp.task('sass', function(){
 	return gulp.src('./scss/style.scss')
 	.pipe(sass().on('error',sass.logError))
+	.pipe(gcmq())
 	.pipe(autoprefixer(['last 5 versions', '> 1%'], {cascade: true}))
 	.pipe(cssnano())
 	.pipe(gulp.dest('./css'))

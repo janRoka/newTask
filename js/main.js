@@ -1,7 +1,12 @@
 $(document).ready(function(){
 
+	/*----- Настройки ------*/
+
 	var ajaxLink = '/ajax/';
 	var w = window.innerWidth; // ширина окна с полосой прокрутки
+
+
+	/*----- Всплывающие окна ------*/
 
 	$('[data-fancybox]').fancybox({
 		loop: true,
@@ -18,12 +23,34 @@ $(document).ready(function(){
 		$.fancybox.close();
 	});
 
+
+	/*----- Ссылки ------*/
+
 	$('a[href="#"]').click(function(){ return false; });
 
-	// Маска телефона
+
+	/*----- Маска телефона ------*/
+
 	$('input[name="phone"]').mask('+7(999)999-99-99');
 
-	// ajax form
+
+	/*----- Меню------*/
+
+	if(w < 992){
+		// Menu trigger
+		$('.top-menu-trigger').click(function(){
+			$('.top-menu').toggle();
+		});
+		// Скрыть элемент при клике за его пределами
+		$(document).click(function(event) {
+			if ($(event.target).closest(".top-menu, .top-menu-trigger").length) return;
+			$(".top-menu").hide();
+			event.stopPropagation();
+		});
+	}
+
+	/*----- Ajax отправка формы------*/
+
 	$('.ajax-form').submit(function(e){
 		e.preventDefault();
 		var params = $(this).serialize();
@@ -33,6 +60,9 @@ $(document).ready(function(){
 			$('.ajax-form').find('input[type="text"],input[type="email"],textarea').val('');
 		});
 	});
+
+
+	/*----- Контент------*/
 
 	// Вырезаем пустые строки и убираем жесткие размеры изображения для телефонов
 	if($('.content-area').length && w < 576){
@@ -47,7 +77,7 @@ $(document).ready(function(){
 		});
 	}
 
-	// slider
+	/*----- Слайдеры------*/
 
 
 
