@@ -22,5 +22,8 @@
     "slick-carousel": "^1.8.1",
     "jquery.maskedinput": "^1.4.1",
     "flickity": "^2.2.0"
+  },
+  "devDependencies": {
+    "jquery.maskedinput": "^1.4.1"
   }
 }

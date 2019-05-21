@@ -58,7 +58,7 @@ gulp.task('compress-css', function () {
 
 gulp.task('compress-js', function () {
 	gulp.src([
-		'app/bower/jquery.maskedinput/dist/jquery.maskedinput.min.js',
+		'app/bower/jquery.maskedinput/dist/jquery.maskedinput.js',
 		'app/bower/fancybox/dist/jquery.fancybox.min.js',
 		'app/bower/flickity/dist/flickity.pkgd.js'
 	])

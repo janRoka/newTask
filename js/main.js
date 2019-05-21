@@ -64,17 +64,31 @@ $(document).ready(function(){
 
 	/*----- Контент------*/
 
-	// Вырезаем пустые строки и убираем жесткие размеры изображения для телефонов
-	if($('.content-area').length && w < 576){
-		$('.content-area img').removeAttr('width').removeAttr('height');
-		$('.content-area p').each(function(){
-			var ps = $(this).nextAll('p');
-			ps.each(function(){
-				if($(this).html() == '&nbsp;'){
-					$(this).remove();
-				}
-			});
+	// Вырезаем пустые строки, убираем жесткие размеры изображения для телефонов, 
+	if($('.content-area').length){
+
+		$('.content-area img').each(function(){
+			if(w < 576){
+				$(this).removeAttr('width').removeAttr('height');
+			}
+			if($(this).hasClass('modal-image')){
+				$(this).wrap('<a href="'+$(this).attr('src')+'" data-fancybox></a>');
+			}
 		});
+
+		if(w < 576){
+
+			$('.content-area p').each(function(){
+				var ps = $(this).nextAll('p');
+				ps.each(function(){
+					if($(this).html() == '&nbsp;'){
+						$(this).remove();
+					}
+				});
+			});
+
+		}
+
 	}
 
 	/*----- Слайдеры------*/
