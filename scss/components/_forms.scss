@@ -1,0 +1,16 @@
+.form{
+	&-input{
+		&-text{
+			
+		}
+		&-submit{
+			
+		}
+	}
+	&-conf{
+		a{
+			color: $text-color;
+			text-decoration: underline;
+		}
+	}
+}

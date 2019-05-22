@@ -2,6 +2,7 @@
 
 var gulp         = require('gulp'),
 	sass         = require('gulp-sass'),
+	sassGlob     = require('gulp-sass-glob'),
 	concat       = require('gulp-concat'),
 	uglify       = require('gulp-uglify'),
 	cssnano      = require('gulp-cssnano'),
@@ -27,7 +28,7 @@ gulp.task('browser-sync',function(){
 });
 
 gulp.task('watch', function(){
-	watch('./scss/*.scss', gulp.parallel('sass')).on('end',browserSync.reload);
+	watch('./scss/**/*.scss', gulp.parallel('sass')).on('end',browserSync.reload);
 	watch('./**/*.html', browserSync.reload);
 	watch('./**/*.php', browserSync.reload);
 	watch('./**/*.tpl', browserSync.reload);
@@ -41,6 +42,7 @@ gulp.task('default', gulp.parallel('watch', 'browser-sync'));
 
 gulp.task('sass', function(){
 	return gulp.src('./scss/style.scss')
+	.pipe(sassGlob())
 	.pipe(sass().on('error',sass.logError))
 	.pipe(gcmq())
 	.pipe(autoprefixer(['last 5 versions', '> 1%'], {cascade: true}))
