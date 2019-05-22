@@ -7,11 +7,37 @@ var gulp         = require('gulp'),
 	cssnano      = require('gulp-cssnano'),
 	browserSync  = require('browser-sync'),
 	autoprefixer = require('gulp-autoprefixer'),
-	gcmq         = require('gulp-group-css-media-queries');
+	gcmq         = require('gulp-group-css-media-queries'),
+	watch        = require('gulp-watch'),
+	cache        = require('gulp-cache'),
+	imagemin     = require('gulp-imagemin'),
+	pngquant     = require('imagemin-pngquant'),
+	imageminJpegRecompress = require('imagemin-jpeg-recompress');
 
-gulp.task('default',function(){
-	console.log('Работает');
+
+/* Слежение */
+
+gulp.task('browser-sync',function(){
+	browserSync.init({
+		server: {
+			baseDir: './'
+		},
+		notify: false
+	});
 });
+
+gulp.task('watch', function(){
+	watch('./scss/*.scss', gulp.parallel('sass')).on('end',browserSync.reload);
+	watch('./**/*.html', browserSync.reload);
+	watch('./**/*.php', browserSync.reload);
+	watch('./**/*.tpl', browserSync.reload);
+	watch('./js/**/*.js', browserSync.reload);
+});
+
+gulp.task('default', gulp.parallel('watch', 'browser-sync'));
+
+
+/* Обработка css/scss кода */
 
 gulp.task('sass', function(){
 	return gulp.src('./scss/style.scss')
@@ -23,33 +49,43 @@ gulp.task('sass', function(){
 	.pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('sass:watch', function(){
-	gulp.watch('./scss/*.scss', ['sass']);
+
+/* Сжатие изображений */
+
+gulp.task('imgmin', function() {
+	return gulp.src('./images/**/*.{jpg,jpeg,png,gif}')
+	.pipe(cache(imagemin([
+		imagemin.gifsicle({interlaced: true}),
+		imagemin.jpegtran({progressive: true}),
+		imageminJpegRecompress({
+			loops: 5,
+			min: 70,
+			max: 75,
+			quality:'medium'
+		}),
+		imagemin.svgo(),
+		imagemin.optipng({optimizationLevel: 3}),
+		pngquant({quality: [0.7, 0.75], speed: 5})
+	],{
+		verbose: true
+	})))
+	.pipe(gulp.dest('./imagecompressor'));
 });
 
-gulp.task('browser-sync',function(){
-	browserSync.init({
-		server: {
-			baseDir: './'
-		},
-		notify: false
-	});
+gulp.task('clear', function (done) {
+	return cache.clearAll(done);
 });
 
-gulp.task('watch', ['browser-sync'], function(){
-	gulp.watch('./scss/*.scss', ['sass']).on('end',browserSync.reload);
-	gulp.watch('./**/*.html', browserSync.reload);
-	gulp.watch('./**/*.php', browserSync.reload);
-	gulp.watch('./js/**/*.js', browserSync.reload);
-});
+
+/* Сборка библиотек */
 
 gulp.task('compress-css', function () {
 	gulp.src([
-		'app/bower/normalize.css/normalize.css',
-		'app/bower/bootstrap-css-only/css/bootstrap.min.css',
-		'app/bower/bootstrap-css-only/css/bootstrap-grid.min.css',
-		'app/bower/fancybox/dist/jquery.fancybox.min.css',
-		'app/bower/flickity/dist/flickity.css',
+		'./app/bower/normalize.css/normalize.css',
+		'./app/bower/bootstrap-css-only/css/bootstrap.min.css',
+		'./app/bower/bootstrap-css-only/css/bootstrap-grid.min.css',
+		'./app/bower/fancybox/dist/jquery.fancybox.min.css',
+		'./app/bower/flickity/dist/flickity.css',
 	])
 	.pipe(concat('libs.min.css'))
 	.pipe(cssnano())
@@ -58,15 +94,15 @@ gulp.task('compress-css', function () {
 
 gulp.task('compress-js', function () {
 	gulp.src([
-		'app/bower/jquery.maskedinput/dist/jquery.maskedinput.js',
-		'app/bower/fancybox/dist/jquery.fancybox.min.js',
-		'app/bower/flickity/dist/flickity.pkgd.js'
+		'./app/bower/jquery.maskedinput/dist/jquery.maskedinput.js',
+		'./app/bower/fancybox/dist/jquery.fancybox.min.js',
+		'./app/bower/flickity/dist/flickity.pkgd.js'
 	])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest('./js'));
 });
 
-gulp.task('build',['compress-css','compress-js'],function(){
+gulp.task('build', gulp.series('compress-css','compress-js'), function(){
 	console.log('Собрано.');
 });
