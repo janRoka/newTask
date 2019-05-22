@@ -16,23 +16,34 @@ var gulp         = require('gulp'),
 	imageminJpegRecompress = require('imagemin-jpeg-recompress');
 
 
+/* Пути */
+
+var path = {
+	base: 'public_html/',
+	watch: {
+		scss: '**/*.scss',
+		other: '**/*.{js,html,php,tpl}'
+	},
+	style: 'scss/style.scss',
+	bower: 'app/bower/'
+}
+
+
 /* Слежение */
 
 gulp.task('browser-sync',function(){
 	browserSync.init({
 		server: {
-			baseDir: './'
+			baseDir: path.base
 		},
+		// proxy: 'site.loc',
 		notify: false
 	});
 });
 
 gulp.task('watch', function(){
-	watch('./scss/**/*.scss', gulp.parallel('sass')).on('end',browserSync.reload);
-	watch('./**/*.html', browserSync.reload);
-	watch('./**/*.php', browserSync.reload);
-	watch('./**/*.tpl', browserSync.reload);
-	watch('./js/**/*.js', browserSync.reload);
+	watch(path.base + path.watch.scss, gulp.parallel('sass')).on('end',browserSync.reload);
+	watch(path.base + path.watch.other, browserSync.reload);
 });
 
 gulp.task('default', gulp.parallel('watch', 'browser-sync'));
@@ -41,21 +52,21 @@ gulp.task('default', gulp.parallel('watch', 'browser-sync'));
 /* Обработка css/scss кода */
 
 gulp.task('sass', function(){
-	return gulp.src('./scss/style.scss')
+	return gulp.src(path.base + path.style)
 	.pipe(sassGlob())
 	.pipe(sass().on('error',sass.logError))
-	.pipe(gcmq())
-	.pipe(autoprefixer(['last 5 versions', '> 1%'], {cascade: true}))
-	.pipe(cssnano())
-	.pipe(gulp.dest('./css'))
+	// .pipe(gcmq())
+	// .pipe(autoprefixer(['last 5 versions', '> 1%'], {cascade: true}))
+	// .pipe(cssnano())
+	.pipe(gulp.dest(path.base + 'css'))
 	.pipe(browserSync.reload({stream: true}));
 });
 
 
-/* Сжатие изображений */
+/* Сжатие изображений, жмет отлично, как optimizilla */
 
 gulp.task('imgmin', function() {
-	return gulp.src('./images/**/*.{jpg,jpeg,png,gif}')
+	return gulp.src(path.base + 'images/**/*.{jpg,jpeg,png,gif}')
 	.pipe(cache(imagemin([
 		imagemin.gifsicle({interlaced: true}),
 		imagemin.jpegtran({progressive: true}),
@@ -71,7 +82,7 @@ gulp.task('imgmin', function() {
 	],{
 		verbose: true
 	})))
-	.pipe(gulp.dest('./imagecompressor'));
+	.pipe(gulp.dest(path.base + './_imagecompressor'));
 });
 
 gulp.task('clear', function (done) {
@@ -83,28 +94,26 @@ gulp.task('clear', function (done) {
 
 gulp.task('compress-css', function () {
 	gulp.src([
-		'./app/bower/normalize.css/normalize.css',
-		'./app/bower/bootstrap-css-only/css/bootstrap.min.css',
-		'./app/bower/bootstrap-css-only/css/bootstrap-grid.min.css',
-		'./app/bower/fancybox/dist/jquery.fancybox.min.css',
-		'./app/bower/flickity/dist/flickity.css',
+		path.bower + 'normalize.css/normalize.css',
+		path.bower + 'bootstrap-css-only/css/bootstrap.min.css',
+		path.bower + 'bootstrap-css-only/css/bootstrap-grid.min.css',
+		path.bower + 'fancybox/dist/jquery.fancybox.min.css',
+		path.bower + 'flickity/dist/flickity.css',
 	])
 	.pipe(concat('libs.min.css'))
 	.pipe(cssnano())
-	.pipe(gulp.dest('./css'));
+	.pipe(gulp.dest(path.base + 'css'));
 });
 
 gulp.task('compress-js', function () {
 	gulp.src([
-		'./app/bower/jquery.maskedinput/dist/jquery.maskedinput.js',
-		'./app/bower/fancybox/dist/jquery.fancybox.min.js',
-		'./app/bower/flickity/dist/flickity.pkgd.js'
+		path.bower + 'jquery.maskedinput/dist/jquery.maskedinput.js',
+		path.bower + 'fancybox/dist/jquery.fancybox.min.js',
+		path.bower + 'flickity/dist/flickity.pkgd.js'
 	])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())
-	.pipe(gulp.dest('./js'));
+	.pipe(gulp.dest(path.base + 'js'));
 });
 
-gulp.task('build', gulp.series('compress-css','compress-js'), function(){
-	console.log('Собрано.');
-});
+gulp.task('build', gulp.parallel('compress-css','compress-js'));
