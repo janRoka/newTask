@@ -20,10 +20,6 @@ var gulp         = require('gulp'),
 
 var path = {
 	base: 'public_html/',
-	watch: {
-		scss: '**/*.scss',
-		other: '**/*.{js,html,php,tpl}'
-	},
 	style: 'scss/style.scss',
 	bower: 'app/bower/'
 }
@@ -42,8 +38,10 @@ gulp.task('browser-sync',function(){
 });
 
 gulp.task('watch', function(){
-	watch(path.base + path.watch.scss, gulp.parallel('sass')).on('end',browserSync.reload);
-	watch(path.base + path.watch.other, browserSync.reload);
+	watch(path.base + 'scss/**/*.scss', gulp.series('sass')).on('end',browserSync.reload);
+	watch(path.base + '*.php', browserSync.reload);
+	watch(path.base + 'elements/*.tpl', browserSync.reload);
+	watch(path.base + 'js/*.js', browserSync.reload);
 });
 
 gulp.task('default', gulp.parallel('watch', 'browser-sync'));
