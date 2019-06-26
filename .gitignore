@@ -1,6 +1,6 @@
 # Папки
-node_modules/
-app/
+/node_modules/
 
 # Файлы
-package-lock.json
+public_html/_libs/node_modules/
+!/public_html/_libs/node_modules/*.{js,css,scss}

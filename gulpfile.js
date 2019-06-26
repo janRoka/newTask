@@ -21,7 +21,7 @@ var gulp         = require('gulp'),
 var path = {
 	base: 'public_html/',
 	style: 'scss/style.scss',
-	bower: 'app/bower/'
+	libs: 'public_html/_libs/node_modules/'
 }
 
 
@@ -92,11 +92,11 @@ gulp.task('clear', function (done) {
 
 gulp.task('compress-css', function () {
 	gulp.src([
-		path.bower + 'normalize.css/normalize.css',
-		path.bower + 'bootstrap-css-only/css/bootstrap.min.css',
-		path.bower + 'bootstrap-css-only/css/bootstrap-grid.min.css',
-		path.bower + 'fancybox/dist/jquery.fancybox.min.css',
-		path.bower + 'flickity/dist/flickity.css',
+		path.libs + 'normalize.css/normalize.css',
+		path.libs + 'bootstrap-css-only/css/bootstrap.min.css',
+		path.libs + 'bootstrap-css-only/css/bootstrap-grid.min.css',
+		path.libs + 'fancybox/dist/css/jquery.fancybox.css',
+		path.libs + 'flickity/dist/flickity.css'
 	])
 	.pipe(concat('libs.min.css'))
 	.pipe(cssnano())
@@ -105,9 +105,9 @@ gulp.task('compress-css', function () {
 
 gulp.task('compress-js', function () {
 	gulp.src([
-		path.bower + 'jquery.maskedinput/dist/jquery.maskedinput.js',
-		path.bower + 'fancybox/dist/jquery.fancybox.min.js',
-		path.bower + 'flickity/dist/flickity.pkgd.js'
+		path.libs + 'jquery.maskedinput/src/jquery.maskedinput.js',
+		path.libs + 'fancybox/dist/js/jquery.fancybox.js',
+		path.libs + 'flickity/dist/flickity.pkgd.js'
 	])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())
