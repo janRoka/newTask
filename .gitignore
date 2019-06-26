@@ -2,5 +2,4 @@
 /node_modules/
 
 # Файлы
-public_html/_libs/node_modules/
-!/public_html/_libs/node_modules/*.{js,css,scss}
+
