@@ -1,18 +1,29 @@
+/*
+|--------------------------------------------
+| Дефолтные стили для элементов
+|--------------------------------------------
+*/
+
 *{
 	box-sizing: border-box;
 	&::selection{  }
 	&:focus{ outline: none; }
 }
 
-a{ text-decoration: underline; }
+a{
+	[href="#"]{
+		pointer-events: none;
+	}
+	text-decoration: underline;
+}
 
 html{
 	font-size: 10px;
 }
 body{
 	font-weight: 400;
-	font-size: 1.6rem;
-	line-height: 1.2;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
 	font-family: 'Helvetica', 'Arial', sans-serif;
 	color: $text-color;
 	max-width: 1920px;
@@ -21,17 +32,17 @@ body{
 html, body{
 	height: 100%;
 }
-.wrapper{
+.page-wrapper{
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
 	overflow-x: hidden;
-}
-.main-block {
-	flex: 1 0 auto;
-}
-.footer {
-	flex: 0 0 auto;
+	&-top{
+		flex: 1 0 auto;
+	}
+	&-bottom{
+		flex: 0 0 auto;
+	}
 }
 .container{
 	position: relative;
@@ -59,5 +70,14 @@ iframe{
 	border: none;
 }
 textarea{
-	resize: none;
+	resize: vertical;
+}
+
+section{
+	position: relative;
+}
+.section{
+	&-title{
+
+	}
 }

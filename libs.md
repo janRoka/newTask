@@ -6,7 +6,7 @@
 
 ### Часто используемые пакеты
 
-`npm i normalize.css bootstrap-css-only jquery.maskedinput fancybox slick-carousel flickity --prefix ./public_html/_libs`
+`npm i jquery/jquery normalize.css bootstrap-css-only jquery.maskedinput fancybox slick-carousel flickity --prefix ./public_html/_libs`
 
 ### Могут понадобиться
 
@@ -20,6 +20,8 @@
 - [harvesthq/chosen](https://harvesthq.github.io/chosen/) - стилизация select
 - [tgomilar/paroller.js/](https://tgomilar.github.io/paroller.js/) - Параллакс
 - [janpaepke/ScrollMagic](http://scrollmagic.io/) - анимация при прокрутке
+- [graingert/wow](https://github.com/graingert/wow) - анимация при прокрутке wow.js
+- [daneden/animate.css](https://github.com/daneden/animate.css) - стили анимаций (так же стили для wow.js)
 
 ### Как обновлять пакеты
 

@@ -20,7 +20,6 @@ var gulp         = require('gulp'),
 
 var path = {
 	base: 'public_html/',
-	style: 'scss/style.scss',
 	libs: 'public_html/_libs/node_modules/'
 }
 
@@ -50,7 +49,7 @@ gulp.task('default', gulp.parallel('watch', 'browser-sync'));
 /* Обработка css/scss кода */
 
 gulp.task('sass', function(){
-	return gulp.src(path.base + path.style)
+	return gulp.src(path.base + 'scss/*.scss')
 	.pipe(sassGlob())
 	.pipe(sass().on('error',sass.logError))
 	// .pipe(gcmq())
@@ -88,15 +87,14 @@ gulp.task('clear', function (done) {
 });
 
 
-/* Сборка библиотек */
+/* Сборка общих библиотек */
 
 gulp.task('compress-css', function () {
 	gulp.src([
 		path.libs + 'normalize.css/normalize.css',
 		path.libs + 'bootstrap-css-only/css/bootstrap.min.css',
 		path.libs + 'bootstrap-css-only/css/bootstrap-grid.min.css',
-		path.libs + 'fancybox/dist/css/jquery.fancybox.css',
-		path.libs + 'flickity/dist/flickity.css'
+		path.libs + 'fancybox/dist/css/jquery.fancybox.css'
 	])
 	.pipe(concat('libs.min.css'))
 	.pipe(cssnano())
@@ -106,8 +104,7 @@ gulp.task('compress-css', function () {
 gulp.task('compress-js', function () {
 	gulp.src([
 		path.libs + 'jquery.maskedinput/src/jquery.maskedinput.js',
-		path.libs + 'fancybox/dist/js/jquery.fancybox.js',
-		path.libs + 'flickity/dist/flickity.pkgd.js'
+		path.libs + 'fancybox/dist/js/jquery.fancybox.js'
 	])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())

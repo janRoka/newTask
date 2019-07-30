@@ -1,5 +1,7 @@
 # Папки
 /node_modules/
 
+
 # Файлы
+/package-lock.json
 
