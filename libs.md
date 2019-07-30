@@ -6,7 +6,7 @@
 
 ### Часто используемые пакеты
 
-`npm i jquery/jquery normalize.css bootstrap-css-only jquery.maskedinput fancybox slick-carousel flickity --prefix ./public_html/_libs`
+`npm i jquery normalize.css bootstrap-css-only jquery.maskedinput fancybox slick-carousel flickity --prefix ./public_html/_libs`
 
 ### Могут понадобиться
 
