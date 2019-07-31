@@ -94,7 +94,7 @@ gulp.task('compress-css', function () {
 		path.libs + 'normalize.css/normalize.css',
 		path.libs + 'bootstrap-css-only/css/bootstrap.min.css',
 		path.libs + 'bootstrap-css-only/css/bootstrap-grid.min.css',
-		path.libs + 'fancybox/dist/css/jquery.fancybox.css'
+		path.libs + '@fancyapps/fancybox/dist/jquery.fancybox.css'
 	])
 	.pipe(concat('libs.min.css'))
 	.pipe(cssnano())
@@ -104,7 +104,7 @@ gulp.task('compress-css', function () {
 gulp.task('compress-js', function () {
 	gulp.src([
 		path.libs + 'jquery.maskedinput/src/jquery.maskedinput.js',
-		path.libs + 'fancybox/dist/js/jquery.fancybox.js'
+		path.libs + '@fancyapps/fancybox/dist/jquery.fancybox.js'
 	])
 	.pipe(concat('libs.min.js'))
 	.pipe(uglify())

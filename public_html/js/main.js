@@ -7,6 +7,7 @@
 $(document).ready(function(){
 
 	/*----- Настройки ------*/
+	
 	var w = window.innerWidth; // ширина окна с полосой прокрутки
 
 	

@@ -2,3 +2,8 @@
 .fancybox-close-small:focus:after{
 	outline: none;
 }
+
+.modal{
+	max-width: calc(100% - 20px);
+	height: auto;
+}

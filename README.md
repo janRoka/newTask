@@ -18,7 +18,7 @@
 
 ### Часто используемые пакеты
 
-`npm i jquery normalize.css bootstrap-css-only jquery.maskedinput fancybox slick-carousel flickity --prefix ./public_html/_libs`
+`npm i jquery normalize.css bootstrap-css-only jquery.maskedinput fancyapps/fancybox slick-carousel flickity --prefix ./public_html/_libs`
 
 Обновление путем установки этих же пакетов этой же командой
 
