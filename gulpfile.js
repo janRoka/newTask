@@ -38,7 +38,7 @@ gulp.task('browser-sync',function(){
 
 gulp.task('watch', function(){
 	watch(path.base + 'scss/**/*.scss', {usePolling: true}, gulp.series('sass')).on('end',browserSync.reload);
-	watch(path.base + '*.php', browserSync.reload);
+	watch(path.base + '*.{php,html}', browserSync.reload);
 	watch(path.base + 'elements/*.tpl', browserSync.reload);
 	watch(path.base + 'js/*.js', browserSync.reload);
 });
