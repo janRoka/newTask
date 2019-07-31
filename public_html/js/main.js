@@ -12,6 +12,6 @@ $(document).ready(function(){
 	
 	/*----- Слайдеры------*/
 
-	$('.some').flickity();
+	
 
 });
