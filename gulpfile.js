@@ -103,7 +103,6 @@ gulp.task('compress-css', function () {
 
 gulp.task('compress-js', function () {
 	gulp.src([
-		path.libs + 'jquery.maskedinput/src/jquery.maskedinput.js',
 		path.libs + '@fancyapps/fancybox/dist/jquery.fancybox.js'
 	])
 	.pipe(concat('libs.min.js'))

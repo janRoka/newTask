@@ -28,9 +28,12 @@ $(document).ready(function(){
 	});
 
 
-	/*----- Маска телефона ------*/
+	/*----- Валидация телефона ------*/
 
-	$('input[name="phone"]').mask('+7(999)999-99-99');
+	$('input[name="phone"]').on('keyup change', function(){
+		var val = $(this).val().replace(/[^0-9+]/,'');
+		$(this).val(val);
+	});
 
 
 	/*----- Меню------*/

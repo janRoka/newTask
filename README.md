@@ -18,7 +18,7 @@
 
 ### Часто используемые пакеты
 
-`npm i jquery normalize.css bootstrap-css-only jquery.maskedinput fancyapps/fancybox slick-carousel flickity --prefix ./public_html/_libs`
+`npm i jquery normalize.css bootstrap-css-only fancyapps/fancybox slick-carousel flickity --prefix ./public_html/_libs`
 
 Обновление путем установки этих же пакетов этой же командой
 
@@ -36,3 +36,4 @@
 - [janpaepke/ScrollMagic](http://scrollmagic.io/) - анимация при прокрутке
 - [graingert/wow](https://github.com/graingert/wow) - анимация при прокрутке wow.js
 - [daneden/animate.css](https://github.com/daneden/animate.css) - стили анимаций (так же стили для wow.js)
+- [jquery.maskedinput](https://github.com/digitalBush/jquery.maskedinput) - маски для вводимых данных
