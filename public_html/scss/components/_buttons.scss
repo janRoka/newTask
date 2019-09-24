@@ -1,4 +1,17 @@
 .btn{
+	display: inline-block;
+	padding: 10px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	border: 1px solid transparent;
+	user-select: none;
+	text-decoration: none;
+	max-width: 100%;
+	background: #fff;
+	&-block{
+		width: 100%;
+	}
 	&:focus{
 		box-shadow: none;
 	}
