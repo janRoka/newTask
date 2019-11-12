@@ -1,11 +1,19 @@
+/*
+|--------------------------------------------
+| Стили всплывающих окон
+|--------------------------------------------
+*/
+
 .fancybox-button:focus,
 .fancybox-close-small:focus:after{
 	outline: none;
 }
 
 .modal{
+	display: none;
 	height: auto;
 	width: 580px;
 	max-width: calc(100% - 20px);
 	padding: 2rem;
+	border-radius: $border-radius;
 }

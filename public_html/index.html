@@ -15,21 +15,12 @@
 	<!-- Мобильная версия -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	
-	<!-- Общий файл стилей для всех шаблонов -->
+	<!-- CSS -->
 	<link rel="stylesheet" href="css/libs.min.css">
+	<link rel="stylesheet" href="css/style.css">
 
-	<!-- Дополнительные библиотеки -->
-	<link rel="stylesheet" href="_libs/node_modules/flickity/dist/flickity.min.css">
-
-	<!-- Стили для этого шаблона -->
-	<link rel="stylesheet" href="css/main.css">
-
-	<!-- jQuery 3.4.1 -->
-	<script src="_libs/node_modules/jquery/dist/jquery.min.js"></script>
-
-	<!-- Дополнительные стороннние скрипты -->
-
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -37,7 +28,7 @@
 
 		<div class="page-wrapper-top">
 
-			<header class="header">
+			<header id="header">
 				<div class="container">
 					
 				</div>
@@ -52,7 +43,7 @@
 		</div>
 		
 		<div class="page-wrapper-bottom">
-			<footer class="footer">
+			<footer id="footer">
 				<div class="container">
 					
 				</div>
@@ -63,7 +54,7 @@
 	
 	<!-- Modals -->
 	<div class="modal modal-callback" id="modal-callback">
-		<form action="/ajax/" class="ajax-form">
+		<form action="php/send.php" class="ajax-form" method="post">
 			<input type="hidden" name="action" value="send-form">
 			<input type="hidden" name="type" value="Обратный звонок">
 			<div class="d-none">
@@ -74,16 +65,9 @@
 	</div>
 	<!-- /Modals -->
 
-
-	<!-- Общие скрипты для всех шаблонов-->
+	<!-- jQuery Scripts -->
 	<script src="js/libs.min.js"></script>
-	<script src="js/default.js"></script>
-
-	<!-- Дополнительные библиотеки -->
-	<script src="_libs/node_modules/flickity/dist/flickity.pkgd.min.js"></script>
-
-	<!-- Скрипты этого шаблона -->
-	<script src="js/main.js"></script>
+	<script src="js/scripts.js"></script>
 
 </body>
 </html>

@@ -4,6 +4,8 @@ if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) || $_SERVER['HTTP_X_REQUESTED_WITH'
 
 if($_SERVER['REQUEST_METHOD'] != 'POST'){ return; }
 
+include 'helpers.php';
+
 $to = 'mail@mail.ru';
 $subject = 'Заявка с сайта Example';
 $message = '';
@@ -18,7 +20,7 @@ $fields = [
 
 foreach($fields as $k => $v){
 	if(isset($_POST[$k]) && !empty($_POST[$k])){
-		$message .= '<b>'.$v.': </b>'.htmlspecialchars($_POST[$k]).'<br>';
+		$message .= '<b>'.$v.': </b>'.clean($_POST[$k]).'<br>';
 	}
 }
 

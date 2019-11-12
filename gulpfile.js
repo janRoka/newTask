@@ -3,6 +3,7 @@
 var gulp         = require('gulp'),
 	sass         = require('gulp-sass'),
 	sassGlob     = require('gulp-sass-glob'),
+	rename       = require('gulp-rename'),
 	concat       = require('gulp-concat'),
 	uglify       = require('gulp-uglify'),
 	cssnano      = require('gulp-cssnano'),
@@ -20,7 +21,9 @@ var gulp         = require('gulp'),
 
 var path = {
 	base: 'public_html/',
-	libs: 'public_html/_libs/node_modules/'
+	libs: 'public_html/_libs/node_modules/',
+	compress: 'public_html/images/',
+	compressed: 'public_html/images_compressed/'
 }
 
 
@@ -39,7 +42,7 @@ gulp.task('browser-sync',function(){
 gulp.task('watch', function(){
 	watch(path.base + 'scss/**/*.scss', {usePolling: true}, gulp.series('sass')).on('end',browserSync.reload);
 	watch(path.base + '*.{php,html}', browserSync.reload);
-	watch(path.base + 'elements/*.tpl', browserSync.reload);
+	watch(path.base + 'elements/*', browserSync.reload);
 	watch(path.base + 'js/*.js', browserSync.reload);
 });
 
@@ -49,12 +52,13 @@ gulp.task('default', gulp.parallel('watch', 'browser-sync'));
 /* Обработка css/scss кода */
 
 gulp.task('sass', function(){
-	return gulp.src(path.base + 'scss/*.scss')
+	return gulp.src(path.base + 'scss/import.scss')
 	.pipe(sassGlob())
 	.pipe(sass().on('error',sass.logError))
 	// .pipe(gcmq())
 	// .pipe(autoprefixer(['last 5 versions', '> 1%'], {cascade: true}))
 	// .pipe(cssnano())
+	.pipe(rename('style.css'))
 	.pipe(gulp.dest(path.base + 'css'))
 	.pipe(browserSync.reload({stream: true}));
 });
@@ -63,7 +67,7 @@ gulp.task('sass', function(){
 /* Сжатие изображений, жмет отлично, как optimizilla */
 
 gulp.task('imgmin', function() {
-	return gulp.src(path.base + 'images/**/*.{jpg,jpeg,png,gif}')
+	return gulp.src(path.compress + '**/*.{jpg,jpeg,png,gif}')
 	.pipe(cache(imagemin([
 		imagemin.gifsicle({interlaced: true}),
 		imagemin.jpegtran({progressive: true}),
@@ -79,7 +83,7 @@ gulp.task('imgmin', function() {
 	],{
 		verbose: true
 	})))
-	.pipe(gulp.dest(path.base + './_imagecompressor'));
+	.pipe(gulp.dest(path.compressed));
 });
 
 gulp.task('clear', function (done) {
@@ -91,9 +95,6 @@ gulp.task('clear', function (done) {
 
 gulp.task('compress-css', function () {
 	gulp.src([
-		path.libs + 'normalize.css/normalize.css',
-		// path.libs + 'bootstrap-css-only/css/bootstrap.min.css',
-		path.libs + 'bootstrap-css-only/css/bootstrap-grid.min.css',
 		path.libs + '@fancyapps/fancybox/dist/jquery.fancybox.css'
 	])
 	.pipe(concat('libs.min.css'))

@@ -1,4 +1,10 @@
-// Стилизация плейсхолдера
+/*
+|--------------------------------------------
+| Миксины
+|--------------------------------------------
+*/
+
+// Стилизация input placeholder
 @mixin placeholder($color: lightgray, $weight: normal){
 	&::-webkit-input-placeholder { color: $color; font-weight: $weight; }
 	&::-moz-placeholder          { color: $color; font-weight: $weight; }
@@ -6,7 +12,7 @@
 	&:-ms-input-placeholder      { color: $color; font-weight: $weight; }
 }
 
-// Заполнитель цвета
+// Заполнитель
 @mixin overlay{
 	position: absolute;
 	left: 0;
