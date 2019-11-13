@@ -95,6 +95,8 @@ gulp.task('clear', function (done) {
 
 gulp.task('compress-css', function () {
 	gulp.src([
+		path.libs + 'normalize.css/normalize.css',
+		path.libs + 'bootstrap/dist/css/bootstrap-grid.css',
 		path.libs + '@fancyapps/fancybox/dist/jquery.fancybox.css'
 	])
 	.pipe(concat('libs.min.css'))
