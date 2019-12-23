@@ -52,18 +52,18 @@ $(document).ready(function(){
 
 	/*----- Меню------*/
 
-	if(w < 992){
-		// Menu trigger
-		$('.top-menu-trigger').click(function(){
+	// Menu trigger
+	$('.top-menu-trigger').click(function(){
+		if(window.innerWidth < 992){
 			$('.top-menu').toggle();
-		});
-		// Скрыть элемент при клике за его пределами
-		$(document).click(function(event) {
-			if ($(event.target).closest(".top-menu, .top-menu-trigger").length) return;
-			$(".top-menu").hide();
-			event.stopPropagation();
-		});
-	}
+		}
+	});
+	// Скрыть элемент при клике за его пределами
+	$(document).click(function(event) {
+		if ($(event.target).closest(".top-menu, .top-menu-trigger").length) return;
+		$('.top-menu').hide();
+		event.stopPropagation();
+	});
 
 	/*----- Ajax отправка формы ------*/
 
