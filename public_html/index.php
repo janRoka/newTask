@@ -10,7 +10,8 @@
 
 	<meta property="og:image" content="" />
 	
-	<link rel="shortcut icon" href="images/favicon.png" type="image/png">
+	<link rel="shortcut icon" href="/apple-touch-icon.png" type="image/png">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 	<!-- Мобильная версия -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">

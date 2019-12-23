@@ -16,7 +16,8 @@ $(document).ready(function(){
 		animationEffect: "fade"
 	});
 
-	$('.btn-modal').click(function(){
+	$('.btn-modal').click(function(e){
+		e.preventDefault();
 		$.fancybox.open({
 			src: $(this).attr('href')
 		});

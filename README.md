@@ -12,7 +12,7 @@
 
 - base/ - стили по умолчанию, классы, цвета, переменные, миксины и пр.
 - components/ - стили отдельных логических объектов, которые используются на всем сайте (кнопки, формы, модальные окна, переопределение стилей сторонних библиотек)
-- elements/ - стили для отдельных блоков сайта, которые могут переиспользоваться на разеых страницах
+- elements/ - стили для отдельных блоков сайта, которые могут переиспользоваться на разных страницах
 - sections/ - стили для секций (шапка, подвал, другие переиспользуемые секции)
 - import.scss - объединяет все стили
 - style.scss - основной файл стилей
@@ -45,6 +45,7 @@
 - [harvesthq/chosen](https://harvesthq.github.io/chosen/) - стилизация select
 - [tgomilar/paroller.js/](https://tgomilar.github.io/paroller.js/) - Параллакс
 - [janpaepke/ScrollMagic](http://scrollmagic.io/) - анимация при прокрутке
-- [graingert/wow](https://github.com/graingert/wow) - анимация при прокрутке wow.js
-- [daneden/animate.css](https://github.com/daneden/animate.css) - стили анимаций (так же стили для wow.js)
+- [aos](https://michalsnik.github.io/aos/) - анимация aos
+- [wow.js](https://github.com/graingert/wow) - анимация при прокрутке wow.js
+- [animate.css](https://github.com/daneden/animate.css) - стили анимаций (так же стили для wow.js)
 - [jquery.maskedinput](https://github.com/digitalBush/jquery.maskedinput) - маски для вводимых данных

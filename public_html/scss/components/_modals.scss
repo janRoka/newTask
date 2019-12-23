@@ -8,12 +8,16 @@
 .fancybox-close-small:focus:after{
 	outline: none;
 }
+.fancybox-container{
+	z-index: 100;
+}
 
 .modal{
 	display: none;
 	height: auto;
 	width: 580px;
 	max-width: calc(100% - 20px);
+	max-height: calc(100% - 30px);
 	padding: 2rem;
 	border-radius: $border-radius;
 }
