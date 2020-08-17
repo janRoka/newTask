@@ -42,7 +42,7 @@ gulp.task('browser-sync',function(){
 gulp.task('watch', function(){
 	watch(path.base + 'scss/**/*.scss', {usePolling: true}, gulp.series('sass')).on('end',browserSync.reload);
 	watch(path.base + '*.{php,html}', browserSync.reload);
-	watch(path.base + 'elements/*', browserSync.reload);
+	watch(path.base + 'elements/*.{php,html}', browserSync.reload);
 	watch(path.base + 'js/*.js', browserSync.reload);
 });
 
@@ -52,13 +52,13 @@ gulp.task('default', gulp.parallel('watch', 'browser-sync'));
 /* Обработка css/scss кода */
 
 gulp.task('sass', function(){
-	return gulp.src(path.base + 'scss/import.scss')
+	return gulp.src(path.base + 'scss/*.scss')
 	.pipe(sassGlob())
 	.pipe(sass().on('error',sass.logError))
 	// .pipe(gcmq())
-	// .pipe(autoprefixer(['last 5 versions', '> 1%'], {cascade: true}))
+	// .pipe(autoprefixer({cascade: true}))
 	// .pipe(cssnano())
-	.pipe(rename('style.css'))
+	// .pipe(rename('style.css'))
 	.pipe(gulp.dest(path.base + 'css'))
 	.pipe(browserSync.reload({stream: true}));
 });

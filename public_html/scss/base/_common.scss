@@ -73,36 +73,51 @@ input{
 		}
 	}
 }
-select{
-	// Скрыввем по дефолту стрелку элемента
-	appearance: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	&::-ms-expand{
-		display: none;
-	}
-}
-// Блок-обертка тега select
-.select{
-	position: relative;
-	display: inline-block;
-	&:after{
-		content: '▼';
-		display: block;
-		font-size: 12px;
-		position: absolute;
-		z-index: 5;
-		right: 10px;
-		top: 50%;
-		transform: translate(0,-50%);
-	}
-}
 iframe{
 	border: none;
 }
 textarea{
 	resize: vertical;
+	&:invalid{
+		box-shadow: none;
+	}
 }
 section{
 	position: relative;
+}
+table{
+	border-collapse: collapse;
+	th, td{
+		border: 1px solid $text-color;
+	}
+}
+
+
+
+/*
+|--------------------------------------------
+| Стили заголовков
+|--------------------------------------------
+*/
+
+h1,h2,h3,h4,h5,.h1,.h2,.h3,.h4,.h5{
+	font-weight: bold;
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+
+h1,.h1{
+	
+}
+h2,.h2{
+	
+}
+h3,.h3{
+	
+}
+h4,.h4{
+	
+}
+h5,.h5{
+	
 }
