@@ -4,9 +4,14 @@
 |--------------------------------------------
 */
 
-$base-line-height: 1.2;
-$base-font-size: 16px;
-$border-radius: 5px;
+// border-radius
+$brs: 5px;
+
+// transition speed
+$ts: .3s;
+
+// тень блоков
+$shadow: 0 0 10px 0 $half-balck;
 
 // Тень текста
 $tsb: -1px 1px 1px #000;

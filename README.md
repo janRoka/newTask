@@ -41,7 +41,7 @@
 - [alvarotrigo/fullPage.js](https://github.com/alvarotrigo/fullPage.js) - полноэкранная прокрутка
 - [abouolia/sticky-sidebar](https://github.com/abouolia/sticky-sidebar) - sticky sidebar
 - [lcdsantos/jQuery-Selectric/](https://github.com/lcdsantos/jQuery-Selectric/) - стилизация select
-- [harvesthq/chosen](https://harvesthq.github.io/chosen/) - стилизация select
+- [chosen-js](https://harvesthq.github.io/chosen/) - стилизация select
 - [tgomilar/paroller.js/](https://tgomilar.github.io/paroller.js/) - Параллакс
 - [janpaepke/ScrollMagic](http://scrollmagic.io/) - анимация при прокрутке
 - [aos](https://michalsnik.github.io/aos/) - анимация aos

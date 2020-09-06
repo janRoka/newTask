@@ -7,7 +7,7 @@
 .btn{
 	display: inline-block;
 	padding: 10px;
-	border-radius: 5px;
+	border-radius: $brs;
 	border: none;
 	cursor: pointer;
 	border: 1px solid transparent;
@@ -15,6 +15,7 @@
 	text-decoration: none;
 	max-width: 100%;
 	background: #fff;
+	transition: $ts;
 	&-block{
 		width: 100%;
 	}
