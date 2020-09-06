@@ -31,18 +31,17 @@ var path = {
 
 gulp.task('browser-sync',function(){
 	browserSync.init({
-		server: {
-			baseDir: path.base
-		},
-		// proxy: 'site.loc',
+		// server: {
+		// 	baseDir: path.base
+		// },
+		proxy: 'site.loc',
 		notify: false
 	});
 });
 
 gulp.task('watch', function(){
 	watch(path.base + 'scss/**/*.scss', {usePolling: true}, gulp.series('sass')).on('end',browserSync.reload);
-	watch(path.base + '*.{php,html}', browserSync.reload);
-	watch(path.base + 'elements/*.{php,html}', browserSync.reload);
+	watch(path.base + '**/*.{php,html}', browserSync.reload);
 	watch(path.base + 'js/*.js', browserSync.reload);
 });
 

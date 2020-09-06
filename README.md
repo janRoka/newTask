@@ -26,7 +26,7 @@
 
 ### Часто используемые пакеты
 
-`npm i fancyapps/fancybox bootstrap --prefix ./public_html/_libs`
+`npm i fancyapps/fancybox bootstrap normalize.css --prefix ./public_html/_libs`
 
 Обновление путем установки этих же пакетов этой же командой
 
