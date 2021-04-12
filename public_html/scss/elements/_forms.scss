@@ -8,6 +8,7 @@
 	&-group{
 		margin-top: 10px;
 	}
+
 	&-input{
 		&-text{
 			display: block;
@@ -16,18 +17,22 @@
 			line-height: 40px;
 			padding: 0 15px;
 			@include placeholder($text-color);
+
 			&.form-select{
 				
 			}
+
 			&.textarea{
 				line-height: $base-line-height;
 				padding: 10px;
 			}
 		}
+		
 		&-submit{
 			border: none;
 		}
 	}
+
 	&-policy{
 		a{
 			text-decoration: underline;

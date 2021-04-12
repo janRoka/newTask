@@ -55,9 +55,8 @@ gulp.task('sass', function(){
 	.pipe(sassGlob())
 	.pipe(sass().on('error',sass.logError))
 	// .pipe(gcmq())
-	// .pipe(autoprefixer({cascade: true}))
+	.pipe(autoprefixer({cascade: true}))
 	// .pipe(cssnano())
-	// .pipe(rename('style.css'))
 	.pipe(gulp.dest(path.base + 'css'))
 	.pipe(browserSync.reload({stream: true}));
 });
@@ -69,7 +68,7 @@ gulp.task('imgmin', function() {
 	return gulp.src(path.compress + '**/*.{jpg,jpeg,png,gif}')
 	.pipe(cache(imagemin([
 		imagemin.gifsicle({interlaced: true}),
-		imagemin.jpegtran({progressive: true}),
+		imagemin.mozjpeg({progressive: true}),
 		imageminJpegRecompress({
 			loops: 5,
 			min: 70,

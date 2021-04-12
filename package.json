@@ -26,5 +26,9 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"author": "",
-	"license": "MIT"
+	"license": "MIT",
+	"browserslist": [
+		"> 1%",
+		"last 5 versions"
+	]
 }
